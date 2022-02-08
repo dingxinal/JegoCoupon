@@ -1,0 +1,24 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "admin",
+      "name": "mytimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 0 12 * * *"
+    },
+    {
+      "type": "sendGrid",
+      "name": "sendGridMessage",
+      "direction": "out",
+      "apiKey": "SendGridAPI",
+      "from": "wudingxin1996@gmail.com"
+    }
+  ],
+  "retry": {
+    "strategy": "fixedDelay",
+    "maxRetryCount": 2,
+    "delayInterval": "00:00:10"
+  }
+}
