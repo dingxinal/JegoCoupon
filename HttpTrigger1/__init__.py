@@ -45,7 +45,7 @@ async def main(mytimer: func.TimerRequest, sendGridMessage: func.Out[str]) -> No
         r.close()
         asession.close()
     if count == 0:
-        email_value+="毫无发现"
+        email_value+="毫无发现 \n"
 
     email_value += """2/3 Update: https://cp.jegotrip.com.cn/partners/skuact/index.html?actName=act1&actId=354 \n  
         https://cp.jegotrip.com.cn/partners/skuact/index.html?actName=act1&actId=357"""
@@ -79,5 +79,10 @@ def detect_time(html_file):
     m3 = re.search("截止日期为(\d+)年(\d+)月(\d+)日", html_file)
     if m3:
         time = datetime(int(m3.groups()[0]), int(m3.groups()[1]), int(m3.groups()[2]), 0, 0, 0, 0)
+        return time
+    
+    m4 = re.search("截止至(\d+)年(\d+)月(\d+)日", html_file)
+    if m4:
+        time = datetime(int(m4.groups()[0]), int(m4.groups()[1]), int(m4.groups()[2]), 0, 0, 0, 0)
         return time
     return time
